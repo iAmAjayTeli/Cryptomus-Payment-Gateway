@@ -1,0 +1,49 @@
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# API Keys (NEVER commit these)
+**/config.js
+**/credentials.js
+
+# Node modules (if using npm)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Build / Dist
+dist/
+build/
+.cache/
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+
+# Backup Files
+*.bak
+*.backup
+
+# Package Lock Files (optional - uncomment if needed)
+# package-lock.json
+# yarn.lock
+

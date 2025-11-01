@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Hostino</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-inter bg-gradient-to-br from-blue-50 to-cyan-50">
+    
+    <!-- Navigation -->
+    <nav class="nav-bar fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="logo text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                    Hostino
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                
+                <!-- Success Icon -->
+                <div class="success-icon-wrapper">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+
+                <!-- Success Message -->
+                <div class="animate-fade-in-up">
+                    <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+                        🎉 Payment Successful!
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 mb-8">
+                        Thank you for choosing <span class="font-bold text-blue-600">Hostino</span>. Your hosting plan is now active!
+                    </p>
+                </div>
+
+                <!-- Success Card -->
+                <div class="success-card">
+                    <div class="flex items-center justify-center mb-6">
+                        <div class="success-checkmark">
+                            <i class="fas fa-check-double text-green-600 text-4xl"></i>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">What Happens Next?</h2>
+                    
+                    <div class="space-y-4 text-left max-w-md mx-auto">
+                        <div class="flex items-start">
+                            <div class="success-step-number">1</div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-800 mb-1">Confirmation Email</h3>
+                                <p class="text-gray-600 text-sm">You'll receive a confirmation email with your login credentials and setup instructions within the next 5 minutes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="success-step-number">2</div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-800 mb-1">Account Activation</h3>
+                                <p class="text-gray-600 text-sm">Your hosting account is being set up. This process usually takes 1-2 minutes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="success-step-number">3</div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-800 mb-1">Start Building</h3>
+                                <p class="text-gray-600 text-sm">Once activated, you can start uploading your website files and building your online presence!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Details -->
+                <div class="order-details-card mt-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Order Details</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Order ID:</span>
+                            <span class="font-mono text-gray-800" id="order-id">HS-2025-001234</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Plan:</span>
+                            <span class="font-semibold text-gray-800" id="plan-name">Pro Hosting</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Amount Paid:</span>
+                            <span class="font-semibold text-green-600" id="amount-paid">$20.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Payment Method:</span>
+                            <span class="text-gray-800 flex items-center">
+                                <i class="fab fa-bitcoin text-orange-500 mr-2"></i>
+                                Cryptocurrency (Cryptomus)
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Transaction Date:</span>
+                            <span class="text-gray-800" id="transaction-date"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+                    <a href="index.html" class="btn-success-primary">
+                        <i class="fas fa-home mr-2"></i>
+                        Return to Home
+                    </a>
+                    <a href="#" class="btn-success-secondary">
+                        <i class="fas fa-tachometer-alt mr-2"></i>
+                        Go to Dashboard
+                    </a>
+                </div>
+
+                <!-- Support Section -->
+                <div class="support-box mt-12">
+                    <i class="fas fa-headset text-4xl text-blue-600 mb-3"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Need Help?</h3>
+                    <p class="text-gray-600 mb-4">Our support team is available 24/7 to assist you</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="support-link">
+                            <i class="fas fa-comments mr-2"></i>
+                            Live Chat
+                        </a>
+                        <a href="#" class="support-link">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Email Support
+                        </a>
+                        <a href="#" class="support-link">
+                            <i class="fas fa-book mr-2"></i>
+                            Knowledge Base
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Confetti Animation -->
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Hostino. All rights reserved.</p>
+                <div class="flex items-center space-x-2">
+                    <span class="text-gray-400 text-sm">Payments powered by</span>
+                    <img src="https://cryptomus.com/images/logo/logo.svg" alt="Cryptomus" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="thankyou.js"></script>
+</body>
+</html>
+

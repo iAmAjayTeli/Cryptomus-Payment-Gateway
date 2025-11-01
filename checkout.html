@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Hostino</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-inter bg-gradient-to-br from-gray-50 to-blue-50">
+    
+    <!-- Navigation -->
+    <nav class="nav-bar fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="logo text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                    Hostino
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="min-h-screen pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Complete Your Purchase</h1>
+                    <p class="text-gray-600 text-lg">You're just one step away from launching your website</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Checkout Form -->
+                    <div class="md:col-span-2">
+                        <div class="checkout-card">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                                <i class="fas fa-user-circle text-blue-600 mr-3"></i>
+                                Your Information
+                            </h2>
+                            
+                            <form id="checkout-form" class="space-y-6">
+                                <div>
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" id="fullname" class="form-input" placeholder="John Doe" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="form-label">Phone Number (Optional)</label>
+                                    <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 000-0000">
+                                </div>
+                                
+                                <div>
+                                    <label class="form-label">Company Name (Optional)</label>
+                                    <input type="text" id="company" class="form-input" placeholder="Your Company">
+                                </div>
+
+                                <div class="border-t pt-6">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                        <i class="fas fa-lock text-green-600 mr-3"></i>
+                                        Secure Payment
+                                    </h3>
+                                    
+                                    <!-- Cryptomus Payment Section -->
+                                    <div class="crypto-payment-section">
+                                        <p class="text-gray-600 mb-4">
+                                            We accept Bitcoin, Ethereum, USDT, and more — all payments secured by <span class="font-semibold text-blue-600">Cryptomus</span>
+                                        </p>
+                                        
+                                        <div class="crypto-icons flex items-center justify-center space-x-4 mb-6">
+                                            <div class="crypto-icon-badge" title="Bitcoin">
+                                                <i class="fab fa-bitcoin text-orange-500 text-3xl"></i>
+                                            </div>
+                                            <div class="crypto-icon-badge" title="Ethereum">
+                                                <i class="fab fa-ethereum text-purple-600 text-3xl"></i>
+                                            </div>
+                                            <div class="crypto-icon-badge" title="USDT">
+                                                <span class="font-bold text-green-600 text-xl">₮</span>
+                                            </div>
+                                            <div class="crypto-icon-badge" title="More">
+                                                <i class="fas fa-plus text-gray-400 text-2xl"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cryptomus Integration Placeholder -->
+                                        <!-- ============================================== -->
+                                        <!-- Cryptomus Integration Code Here -->
+                                        <!-- 
+                                        This is where the Cryptomus payment integration will be implemented.
+                                        
+                                        Integration steps:
+                                        1. Include Cryptomus SDK
+                                        2. Initialize payment with merchant ID
+                                        3. Create payment invoice
+                                        4. Handle payment callback
+                                        5. Redirect to thank you page on success
+                                        
+                                        Example structure:
+                                        <script src="https://cryptomus.com/sdk.js"></script>
+                                        <script>
+                                            const cryptomus = new Cryptomus({
+                                                merchantId: 'YOUR_MERCHANT_ID',
+                                                apiKey: 'YOUR_API_KEY'
+                                            });
+                                            
+                                            // Payment button click handler
+                                            document.getElementById('pay-with-cryptomus').addEventListener('click', async () => {
+                                                const payment = await cryptomus.createPayment({
+                                                    amount: selectedPlanPrice,
+                                                    currency: 'USD',
+                                                    order_id: generateOrderId(),
+                                                    customer: {
+                                                        email: document.getElementById('email').value,
+                                                        name: document.getElementById('fullname').value
+                                                    }
+                                                });
+                                                
+                                                // Redirect to payment page
+                                                window.location.href = payment.url;
+                                            });
+                                        </script>
+                                        -->
+                                        <!-- ============================================== -->
+
+                                        <button type="button" id="pay-with-cryptomus" class="btn-pay-crypto">
+                                            <i class="fas fa-coins mr-3"></i>
+                                            Pay Securely with Cryptomus
+                                        </button>
+
+                                        <div class="mt-4 flex items-center justify-center">
+                                            <img src="https://cryptomus.com/images/logo/logo.svg" alt="Cryptomus" class="h-8 opacity-60">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center text-sm text-gray-500 pt-4">
+                                    <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+                                    Your payment information is encrypted and secure
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="md:col-span-1">
+                        <div class="order-summary sticky top-32">
+                            <h2 class="text-xl font-bold text-gray-800 mb-6">Order Summary</h2>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between items-center pb-4 border-b">
+                                    <span class="text-gray-600">Plan</span>
+                                    <span class="font-bold text-gray-800" id="selected-plan">Loading...</span>
+                                </div>
+                                
+                                <div class="space-y-2 pb-4 border-b">
+                                    <div class="flex items-center text-sm text-gray-600">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span id="plan-storage">Loading...</span>
+                                    </div>
+                                    <div class="flex items-center text-sm text-gray-600">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span id="plan-bandwidth">Loading...</span>
+                                    </div>
+                                    <div class="flex items-center text-sm text-gray-600">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span id="plan-websites">Loading...</span>
+                                    </div>
+                                    <div class="flex items-center text-sm text-gray-600">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Free SSL Certificate</span>
+                                    </div>
+                                    <div class="flex items-center text-sm text-gray-600">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>24/7 Support</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-gray-600">Subtotal</span>
+                                    <span class="text-gray-800" id="subtotal">$0.00</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center text-sm pb-4 border-b">
+                                    <span class="text-gray-600">Tax</span>
+                                    <span class="text-gray-800">$0.00</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center pt-2">
+                                    <span class="text-xl font-bold text-gray-800">Total</span>
+                                    <span class="text-2xl font-bold text-blue-600" id="total">$0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-info-circle text-blue-600 mt-1 mr-3"></i>
+                                    <p class="text-sm text-blue-800">
+                                        Your plan will be activated immediately after payment confirmation.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <a href="pricing.html" class="text-sm text-blue-600 hover:text-blue-700 transition">
+                                    <i class="fas fa-arrow-left mr-2"></i>
+                                    Change Plan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Security Features -->
+                <div class="mt-12 grid md:grid-cols-3 gap-6">
+                    <div class="security-badge">
+                        <i class="fas fa-lock text-2xl text-green-600 mb-2"></i>
+                        <h4 class="font-semibold text-gray-800">Secure Checkout</h4>
+                        <p class="text-sm text-gray-600">256-bit SSL encryption</p>
+                    </div>
+                    <div class="security-badge">
+                        <i class="fas fa-undo text-2xl text-blue-600 mb-2"></i>
+                        <h4 class="font-semibold text-gray-800">30-Day Guarantee</h4>
+                        <p class="text-sm text-gray-600">Money-back guarantee</p>
+                    </div>
+                    <div class="security-badge">
+                        <i class="fas fa-headset text-2xl text-purple-600 mb-2"></i>
+                        <h4 class="font-semibold text-gray-800">24/7 Support</h4>
+                        <p class="text-sm text-gray-600">Always here to help</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Hostino. All rights reserved.</p>
+                <div class="flex items-center space-x-2">
+                    <span class="text-gray-400 text-sm">Payments powered by</span>
+                    <img src="https://cryptomus.com/images/logo/logo.svg" alt="Cryptomus" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- 🔐 CRYPTOMUS PAYMENT GATEWAY INTEGRATION -->
+    <!-- Step 1: Include CryptoJS library for secure signature generation -->
+    <!-- ============================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    
+    <!-- 🎬 DEMO MODE (Comment out to use real Cryptomus API) -->
+    <!-- Demo mode is now DISABLED - Using real Cryptomus API -->
+    <!-- <script src="cryptomus-demo.js"></script> -->
+    
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>
+

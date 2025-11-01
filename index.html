@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostino - Fast & Secure Web Hosting</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <meta name="cryptomus" content="8ca4881f" />
+</head>
+<body class="font-inter">
+    
+    <!-- Navigation -->
+    <nav class="nav-bar fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="logo text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                    Hostino
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Login</a>
+                    <a href="pricing.html" class="btn-primary">Get Started</a>
+                </div>
+                <button class="md:hidden text-gray-700" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu hidden md:hidden mt-4 pb-4">
+                <a href="index.html" class="block py-2 nav-link active">Home</a>
+                <a href="pricing.html" class="block py-2 nav-link">Pricing</a>
+                <a href="#contact" class="block py-2 nav-link">Contact</a>
+                <a href="#" class="block py-2 nav-link">Login</a>
+                <a href="pricing.html" class="btn-primary inline-block mt-2">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="hero-bg"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="animate-fade-in-up">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                        Fast & Secure Web Hosting for Everyone
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white/90 mb-8">
+                        Launch your website instantly with Hostino — now accepting crypto payments powered by <span class="font-semibold text-cyan-300">Cryptomus</span>
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="pricing.html" class="btn-hero-primary">
+                            Get Started <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="pricing.html" class="btn-hero-secondary">
+                            View Pricing <i class="fas fa-tag ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-16 animate-float">
+                    <img src="https://img.icons8.com/clouds/400/000000/server.png" alt="Server" class="mx-auto opacity-90">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Why Choose Hostino?</h2>
+                <p class="text-gray-600 text-lg">Everything you need to succeed online</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-gradient-to-br from-blue-500 to-blue-600">
+                        <i class="fas fa-bolt text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">99.9% Uptime Guarantee</h3>
+                    <p class="text-gray-600">
+                        Your website stays online with our robust infrastructure and redundant systems. We guarantee maximum uptime for your business.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-gradient-to-br from-cyan-500 to-cyan-600">
+                        <i class="fas fa-shield-halved text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Secure Payments with Cryptomus</h3>
+                    <p class="text-gray-600">
+                        Accept cryptocurrency payments seamlessly. Bitcoin, Ethereum, USDT, and more — all secured by Cryptomus technology.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-gradient-to-br from-purple-500 to-purple-600">
+                        <i class="fas fa-headset text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">24/7 Developer Support</h3>
+                    <p class="text-gray-600">
+                        Our expert team is always ready to help. Get assistance anytime via live chat, email, or phone support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Everything You Need to Succeed</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="benefit-card">
+                    <i class="fas fa-rocket text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Instant Setup</h3>
+                    <p class="text-gray-600">Get your website live in minutes with our one-click installation</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-lock text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Free SSL Certificates</h3>
+                    <p class="text-gray-600">Secure your site with automatic SSL encryption at no extra cost</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Scalable Infrastructure</h3>
+                    <p class="text-gray-600">Grow your business without limits with our flexible resources</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Domain Search Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="section-title mb-4">Find Your Perfect Domain</h2>
+                <p class="text-gray-600 mb-8 text-lg">Start your online journey with the perfect domain name</p>
+                
+                <div class="domain-search-box">
+                    <input type="text" id="domain-input" placeholder="Enter your domain name..." class="domain-input">
+                    <button id="search-domain-btn" class="domain-btn">
+                        <i class="fas fa-search mr-2"></i> Search
+                    </button>
+                </div>
+                
+                <div id="domain-result" class="domain-result hidden">
+                    <i class="fas fa-check-circle text-green-500 text-4xl mb-3"></i>
+                    <p class="text-xl font-semibold text-gray-800">
+                        <span id="searched-domain"></span> is available!
+                    </p>
+                    <p class="text-gray-600 mt-2">Register now for only $12.99/year</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="text-gray-600 text-lg">Join thousands of satisfied customers</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="User" class="testimonial-avatar">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500">Small Business Owner</p>
+                        </div>
+                    </div>
+                    <div class="stars mb-3">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Hostino made launching my business site so easy! The setup was instant and the support team is amazing. Highly recommend!"
+                    </p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="User" class="testimonial-avatar">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Michael Chen</h4>
+                            <p class="text-sm text-gray-500">Web Developer</p>
+                        </div>
+                    </div>
+                    <div class="stars mb-3">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Loved the crypto payment option — it's so smooth! The integration with Cryptomus is seamless. Best hosting I've used."
+                    </p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/100?img=5" alt="User" class="testimonial-avatar">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Emily Rodriguez</h4>
+                            <p class="text-sm text-gray-500">E-commerce Store Owner</p>
+                        </div>
+                    </div>
+                    <div class="stars mb-3">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Blazing-fast servers with great support! My store loads in milliseconds. The uptime guarantee is real. Five stars!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
+            <p class="text-xl mb-8 text-white/90">Join thousands of websites powered by Hostino today</p>
+            <a href="pricing.html" class="btn-cta">
+                Choose Your Plan <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Hostino</h3>
+                    <p class="text-gray-400">Fast, secure, and reliable web hosting for everyone.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="pricing.html" class="hover:text-white transition">Shared Hosting</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">VPS Hosting</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">Dedicated Servers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Domain Names</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Hostino. All rights reserved.</p>
+                <div class="flex items-center space-x-2">
+                    <span class="text-gray-400 text-sm">Payments powered by</span>
+                    <img src="https://cryptomus.com/images/logo/logo.svg" alt="Cryptomus" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

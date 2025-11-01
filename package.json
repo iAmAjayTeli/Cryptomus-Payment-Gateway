@@ -1,0 +1,24 @@
+{
+  "name": "hostino-demo",
+  "version": "1.0.0",
+  "description": "Professional Hosting Provider Demo Website with Cryptomus Payment Gateway Integration",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "hosting",
+    "cryptomus",
+    "payment-gateway",
+    "demo",
+    "website"
+  ],
+  "author": "Hostino Demo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/hostino-demo"
+  }
+}
+

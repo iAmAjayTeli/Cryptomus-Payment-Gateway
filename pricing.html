@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Hostino</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-inter bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="nav-bar fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="logo text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                    Hostino
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="pricing.html" class="nav-link active">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Login</a>
+                    <a href="pricing.html" class="btn-primary">Get Started</a>
+                </div>
+                <button class="md:hidden text-gray-700" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu hidden md:hidden mt-4 pb-4">
+                <a href="index.html" class="block py-2 nav-link">Home</a>
+                <a href="pricing.html" class="block py-2 nav-link active">Pricing</a>
+                <a href="#contact" class="block py-2 nav-link">Contact</a>
+                <a href="#" class="block py-2 nav-link">Login</a>
+                <a href="pricing.html" class="btn-primary inline-block mt-2">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 bg-gradient-to-br from-blue-600 to-cyan-500">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">Choose Your Hosting Plan</h1>
+            <p class="text-xl text-white/90 max-w-2xl mx-auto">
+                Select the perfect plan for your needs. All plans include free SSL, 24/7 support, and now accept cryptocurrency!
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">Popular</div>
+                    <div class="text-center mb-8">
+                        <i class="fas fa-server text-5xl text-blue-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Basic</h3>
+                        <p class="text-gray-600">Perfect for personal websites</p>
+                    </div>
+                    <div class="text-center mb-8">
+                        <div class="flex items-baseline justify-center">
+                            <span class="text-5xl font-bold text-gray-800">$10</span>
+                            <span class="text-gray-600 ml-2">/month</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>10GB SSD Storage</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>100GB Bandwidth</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>1 Website</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Free SSL Certificate</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>24/7 Support</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>99.9% Uptime</span>
+                        </li>
+                    </ul>
+                    <a href="checkout.html?plan=Basic" class="btn-pricing">Get Started</a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge-featured">Best Value</div>
+                    <div class="text-center mb-8">
+                        <i class="fas fa-rocket text-5xl text-white mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">Pro</h3>
+                        <p class="text-white/80">Ideal for growing businesses</p>
+                    </div>
+                    <div class="text-center mb-8">
+                        <div class="flex items-baseline justify-center">
+                            <span class="text-5xl font-bold text-white">$20</span>
+                            <span class="text-white/80 ml-2">/month</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="pricing-feature text-white">
+                            <i class="fas fa-check-circle text-cyan-300 mr-3"></i>
+                            <span>50GB SSD Storage</span>
+                        </li>
+                        <li class="pricing-feature text-white">
+                            <i class="fas fa-check-circle text-cyan-300 mr-3"></i>
+                            <span>500GB Bandwidth</span>
+                        </li>
+                        <li class="pricing-feature text-white">
+                            <i class="fas fa-check-circle text-cyan-300 mr-3"></i>
+                            <span>5 Websites</span>
+                        </li>
+                        <li class="pricing-feature text-white">
+                            <i class="fas fa-check-circle text-cyan-300 mr-3"></i>
+                            <span>Free SSL Certificate</span>
+                        </li>
+                        <li class="pricing-feature text-white">
+                            <i class="fas fa-check-circle text-cyan-300 mr-3"></i>
+                            <span>Free Domain (1 year)</span>
+                        </li>
+                        <li class="pricing-feature text-white">
+                            <i class="fas fa-check-circle text-cyan-300 mr-3"></i>
+                            <span>Priority Support</span>
+                        </li>
+                    </ul>
+                    <a href="checkout.html?plan=Pro" class="btn-pricing-featured">Get Started</a>
+                </div>
+
+                <!-- Business Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">Enterprise</div>
+                    <div class="text-center mb-8">
+                        <i class="fas fa-building text-5xl text-blue-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Business</h3>
+                        <p class="text-gray-600">For high-traffic websites</p>
+                    </div>
+                    <div class="text-center mb-8">
+                        <div class="flex items-baseline justify-center">
+                            <span class="text-5xl font-bold text-gray-800">$30</span>
+                            <span class="text-gray-600 ml-2">/month</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>100GB SSD Storage</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>1TB Bandwidth</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Unlimited Websites</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Free SSL Certificate</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Free Domain (1 year)</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Dedicated Support</span>
+                        </li>
+                    </ul>
+                    <a href="checkout.html?plan=Business" class="btn-pricing">Get Started</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Compare Features</h2>
+                <p class="text-gray-600 text-lg">See what's included in each plan</p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto overflow-x-auto">
+                <table class="comparison-table w-full">
+                    <thead>
+                        <tr>
+                            <th class="text-left py-4 px-6 font-bold text-gray-800">Feature</th>
+                            <th class="py-4 px-6 font-bold text-gray-800">Basic</th>
+                            <th class="py-4 px-6 font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500">Pro</th>
+                            <th class="py-4 px-6 font-bold text-gray-800">Business</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">SSD Storage</td>
+                            <td class="py-4 px-6 text-center">10GB</td>
+                            <td class="py-4 px-6 text-center bg-blue-50">50GB</td>
+                            <td class="py-4 px-6 text-center">100GB</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-medium">Bandwidth</td>
+                            <td class="py-4 px-6 text-center">100GB</td>
+                            <td class="py-4 px-6 text-center bg-blue-50">500GB</td>
+                            <td class="py-4 px-6 text-center">1TB</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">Websites</td>
+                            <td class="py-4 px-6 text-center">1</td>
+                            <td class="py-4 px-6 text-center bg-blue-50">5</td>
+                            <td class="py-4 px-6 text-center">Unlimited</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-medium">Free SSL</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                            <td class="py-4 px-6 text-center bg-blue-50"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">Free Domain</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                            <td class="py-4 px-6 text-center bg-blue-50"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-medium">24/7 Support</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                            <td class="py-4 px-6 text-center bg-blue-50"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">Backup & Restore</td>
+                            <td class="py-4 px-6 text-center">Weekly</td>
+                            <td class="py-4 px-6 text-center bg-blue-50">Daily</td>
+                            <td class="py-4 px-6 text-center">Daily + Real-time</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-medium">CDN Integration</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                            <td class="py-4 px-6 text-center bg-blue-50"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500 text-xl"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">Email Accounts</td>
+                            <td class="py-4 px-6 text-center">10</td>
+                            <td class="py-4 px-6 text-center bg-blue-50">50</td>
+                            <td class="py-4 px-6 text-center">Unlimited</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-medium">Database</td>
+                            <td class="py-4 px-6 text-center">MySQL</td>
+                            <td class="py-4 px-6 text-center bg-blue-50">MySQL + PostgreSQL</td>
+                            <td class="py-4 px-6 text-center">MySQL + PostgreSQL + MongoDB</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="faq-item">
+                    <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                        <i class="fas fa-question-circle text-blue-600 mr-3"></i>
+                        Can I upgrade my plan later?
+                    </h3>
+                    <p class="text-gray-600 ml-9">Yes! You can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                        <i class="fas fa-question-circle text-blue-600 mr-3"></i>
+                        What payment methods do you accept?
+                    </h3>
+                    <p class="text-gray-600 ml-9">We accept all major cryptocurrencies via Cryptomus including Bitcoin, Ethereum, USDT, and more. Credit cards coming soon!</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                        <i class="fas fa-question-circle text-blue-600 mr-3"></i>
+                        Is there a money-back guarantee?
+                    </h3>
+                    <p class="text-gray-600 ml-9">Yes, we offer a 30-day money-back guarantee on all plans. If you're not satisfied, we'll refund your payment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Still Have Questions?</h2>
+            <p class="text-xl mb-8 text-white/90">Our team is here to help you choose the right plan</p>
+            <a href="#contact" class="btn-cta">
+                Contact Us <i class="fas fa-comments ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Hostino</h3>
+                    <p class="text-gray-400">Fast, secure, and reliable web hosting for everyone.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="pricing.html" class="hover:text-white transition">Shared Hosting</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">VPS Hosting</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">Dedicated Servers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Domain Names</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Hostino. All rights reserved.</p>
+                <div class="flex items-center space-x-2">
+                    <span class="text-gray-400 text-sm">Payments powered by</span>
+                    <img src="https://cryptomus.com/images/logo/logo.svg" alt="Cryptomus" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
