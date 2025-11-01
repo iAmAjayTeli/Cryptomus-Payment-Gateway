@@ -1,474 +1,416 @@
-# Cryptomus Payment Gateway Integration Guide
+# 🚀 Cryptomus Payment Gateway - Integration Guide
 
-Complete guide for integrating Cryptomus cryptocurrency payment gateway into the Hostino demo website.
+Complete guide to integrate Cryptomus cryptocurrency payments into any website using the **Widget Method** (simplest approach).
 
 ---
 
 ## 📋 Table of Contents
 
-1. [Prerequisites](#prerequisites)
-2. [Getting Started with Cryptomus](#getting-started-with-cryptomus)
-3. [Integration Steps](#integration-steps)
-4. [Code Implementation](#code-implementation)
-5. [Testing](#testing)
-6. [Going Live](#going-live)
+1. [What You'll Learn](#what-youll-learn)
+2. [Prerequisites](#prerequisites)
+3. [Getting Started](#getting-started)
+4. [Integration Steps](#integration-steps)
+5. [Complete Code Example](#complete-code-example)
+6. [Testing](#testing)
 7. [Troubleshooting](#troubleshooting)
+8. [Going Live](#going-live)
 
 ---
 
-## Prerequisites
+## 🎯 What You'll Learn
 
-Before starting the integration:
-
-- ✅ Active Cryptomus merchant account
-- ✅ Merchant ID and API Key from Cryptomus dashboard
-- ✅ Basic understanding of JavaScript and APIs
-- ✅ HTTPS-enabled domain (for production)
-- ✅ Webhook endpoint for payment notifications (optional for demo)
+By the end of this guide, you'll be able to:
+- ✅ Accept 50+ cryptocurrencies on your website
+- ✅ Integrate Cryptomus in under 10 minutes
+- ✅ No backend server required
+- ✅ No CORS issues
+- ✅ Production-ready solution
 
 ---
 
-## Getting Started with Cryptomus
+## 📦 Prerequisites
 
-### Step 1: Create Account
+Before starting:
+- ✅ Cryptomus account ([Sign up free](https://cryptomus.com))
+- ✅ Merchant ID and Payment API Key
+- ✅ Basic HTML/JavaScript knowledge
+- ✅ Website with payment form
+
+---
+
+## 🚀 Getting Started
+
+### Step 1: Create Cryptomus Account
 
 1. Visit [https://cryptomus.com](https://cryptomus.com)
-2. Click **"Sign Up"** or **"Get Started"**
-3. Complete the registration form
-4. Verify your email address
+2. Click **"Sign Up"**
+3. Complete registration
+4. Verify your email
 
 ### Step 2: Get API Credentials
 
-1. Log into your Cryptomus dashboard
-2. Navigate to **Settings** → **API Keys**
-3. Generate a new API key
-4. Save your:
-   - **Merchant ID** (UUID format)
-   - **API Key** (Secret key)
-   - **Payment Key** (Public key)
+1. Login to [Cryptomus Dashboard](https://app.cryptomus.com)
+2. Go to **Settings** → **API Keys**
+3. Look for **"Payment API"** or **"User API"** section
+4. Copy your:
+   - **Merchant ID** (UUID format: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`)
+   - **Payment API Key** (40 characters)
+5. **Important:** Make sure API key is **ACTIVE** (not inactive)
 
-⚠️ **Important**: Keep your API Key secure and never expose it in frontend code!
-
-### Step 3: Configure Merchant Settings
-
-1. Set your business information
-2. Configure accepted cryptocurrencies
-3. Set up webhook URL (optional)
-4. Define success/fail redirect URLs
-
----
-
-## Integration Steps
-
-### Overview
-
-The integration process involves:
-
-1. Including Cryptomus SDK
-2. Creating payment invoice
-3. Redirecting user to payment page
-4. Handling payment callback
-5. Verifying payment status
-
----
-
-## Code Implementation
-
-### Method 1: Direct API Integration (Recommended)
-
-#### Backend Setup (Node.js Example)
-
-Create a backend endpoint to handle payment creation:
-
-```javascript
-// server.js
-const express = require('express');
-const crypto = require('crypto');
-const axios = require('axios');
-
-const app = express();
-app.use(express.json());
-
-const CRYPTOMUS_API_KEY = 'your_api_key_here';
-const CRYPTOMUS_MERCHANT_ID = 'your_merchant_id_here';
-const CRYPTOMUS_API_URL = 'https://api.cryptomus.com/v1';
-
-// Generate signature for API requests
-function generateSignature(data) {
-    const jsonData = JSON.stringify(data);
-    const hash = crypto.createHash('md5').update(jsonData).digest('hex');
-    return crypto.createHash('md5').update(hash + CRYPTOMUS_API_KEY).digest('hex');
-}
-
-// Create payment endpoint
-app.post('/api/create-payment', async (req, res) => {
-    try {
-        const { amount, currency, order_id, customer_email, customer_name, plan } = req.body;
-        
-        const paymentData = {
-            amount: amount.toString(),
-            currency: currency,
-            order_id: order_id,
-            url_return: 'https://yourdomain.com/thankyou.html',
-            url_callback: 'https://yourdomain.com/api/payment-callback',
-            additional_data: JSON.stringify({
-                customer_email: customer_email,
-                customer_name: customer_name,
-                plan: plan
-            })
-        };
-        
-        const signature = generateSignature(paymentData);
-        
-        const response = await axios.post(
-            `${CRYPTOMUS_API_URL}/payment`,
-            paymentData,
-            {
-                headers: {
-                    'merchant': CRYPTOMUS_MERCHANT_ID,
-                    'sign': signature,
-                    'Content-Type': 'application/json'
-                }
-            }
-        );
-        
-        res.json({
-            success: true,
-            payment_url: response.data.result.url,
-            payment_id: response.data.result.uuid
-        });
-        
-    } catch (error) {
-        console.error('Payment creation error:', error);
-        res.status(500).json({
-            success: false,
-            error: error.message
-        });
-    }
-});
-
-// Webhook handler for payment notifications
-app.post('/api/payment-callback', (req, res) => {
-    try {
-        const paymentData = req.body;
-        
-        // Verify signature
-        const signature = generateSignature(paymentData);
-        if (signature !== req.headers['sign']) {
-            return res.status(400).json({ error: 'Invalid signature' });
-        }
-        
-        // Payment successful
-        if (paymentData.status === 'paid') {
-            // Update your database
-            // Send confirmation email
-            // Activate hosting account
-            console.log('Payment confirmed:', paymentData.order_id);
-        }
-        
-        res.json({ success: true });
-        
-    } catch (error) {
-        console.error('Webhook error:', error);
-        res.status(500).json({ error: error.message });
-    }
-});
-
-app.listen(3000, () => {
-    console.log('Server running on port 3000');
-});
+**Example credentials format:**
+```
+Merchant ID: 8ca4881f-0c2a-44d2-8b69-5bca0fcc4189
+API Key: 305e28fcecdfee2ce29025359832d63bb12b9617
 ```
 
-#### Frontend Integration (checkout.html)
+**Note:** You DON'T need to create a widget in the dashboard!
 
-Update the payment button handler in `checkout.html`:
+---
+
+## 🛠️ Integration Steps
+
+### Method: Cryptomus Widget (Recommended)
+
+This is the simplest method - no backend required!
+
+#### Step 1: Add Widget Script to Your HTML
+
+Add this before the closing `</body>` tag:
 
 ```html
-<!-- In checkout.html, replace the Cryptomus placeholder section -->
+<!-- Cryptomus Widget Script -->
+<script src="https://cryptomus.com/widget/v1/widget.js"></script>
+```
 
+#### Step 2: Initialize the Widget
+
+Add this JavaScript code after the widget script:
+
+```html
 <script>
-document.getElementById('pay-with-cryptomus').addEventListener('click', async function(e) {
-    e.preventDefault();
-    
-    // Validate form
-    const fullname = document.getElementById('fullname').value;
-    const email = document.getElementById('email').value;
-    
-    if (!fullname || !email) {
-        alert('Please fill in all required fields');
-        return;
-    }
-    
-    // Show loading
-    const originalText = this.innerHTML;
-    this.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i> Processing...';
-    this.disabled = true;
-    
-    try {
-        // Get plan and amount
-        const urlParams = new URLSearchParams(window.location.search);
-        const plan = urlParams.get('plan') || 'Pro';
-        const amount = getPlanPrice(plan); // Your function to get price
+    // Initialize Cryptomus Widget
+    const cryptomusWidget = new CryptomusWidget({
+        merchant_id: 'YOUR_MERCHANT_ID_HERE',  // Your Merchant ID
+        amount: '20.00',                       // Payment amount
+        currency: 'USD',                       // Currency code
+        order_id: 'ORDER-' + Date.now(),      // Unique order ID
+        success_url: window.location.origin + '/thankyou.html',  // Success redirect
+        fail_url: window.location.origin + '/checkout.html?error=payment_failed'  // Fail redirect
+    });
+</script>
+```
+
+#### Step 3: Add Payment Button Handler
+
+Connect your payment button to open the widget:
+
+```html
+<script>
+    document.getElementById('pay-with-cryptomus').addEventListener('click', function(e) {
+        e.preventDefault();
         
-        // Call your backend
-        const response = await fetch('/api/create-payment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                amount: amount,
-                currency: 'USD',
-                order_id: 'ORDER-' + Date.now(),
-                customer_email: email,
-                customer_name: fullname,
-                plan: plan
-            })
-        });
+        // Get form values
+        const fullname = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('email').value.trim();
         
-        const data = await response.json();
-        
-        if (data.success) {
-            // Redirect to Cryptomus payment page
-            window.location.href = data.payment_url;
-        } else {
-            throw new Error(data.error || 'Payment creation failed');
+        // Validate form
+        if (!fullname || fullname.length < 2) {
+            alert('Please enter your full name');
+            return;
         }
         
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Payment creation failed. Please try again.');
-        this.innerHTML = originalText;
-        this.disabled = false;
-    }
-});
-
-function getPlanPrice(plan) {
-    const prices = { 'Basic': 10, 'Pro': 20, 'Business': 30 };
-    return prices[plan] || 20;
-}
+        if (!email || !email.includes('@')) {
+            alert('Please enter a valid email');
+            return;
+        }
+        
+        // Open Cryptomus payment widget
+        cryptomusWidget.open();
+    });
 </script>
 ```
 
 ---
 
-### Method 2: Cryptomus Widget Integration (Simpler)
+## 💻 Complete Code Example
 
-For a simpler integration without backend:
+Here's a complete working example:
 
 ```html
-<!-- Add to checkout.html -->
-<script src="https://cryptomus.com/widget/v1/widget.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Cryptomus Payment</title>
+</head>
+<body>
+    <h1>Complete Your Purchase</h1>
+    
+    <!-- Checkout Form -->
+    <form id="checkout-form">
+        <label>Full Name:</label>
+        <input type="text" id="fullname" required>
+        
+        <label>Email:</label>
+        <input type="email" id="email" required>
+        
+        <label>Amount: $20.00</label>
+        
+        <button type="button" id="pay-with-cryptomus">
+            Pay with Cryptocurrency
+        </button>
+    </form>
 
+    <!-- Cryptomus Widget Script -->
+    <script src="https://cryptomus.com/widget/v1/widget.js"></script>
+
+    <!-- Widget Implementation -->
+    <script>
+        // Initialize Cryptomus Widget
+        const cryptomusWidget = new CryptomusWidget({
+            merchant_id: 'YOUR_MERCHANT_ID_HERE',
+            amount: '20.00',
+            currency: 'USD',
+            order_id: 'ORDER-' + Date.now(),
+            success_url: window.location.origin + '/thankyou.html',
+            fail_url: window.location.origin + '/checkout.html?error=payment_failed'
+        });
+        
+        // Handle payment button click
+        document.getElementById('pay-with-cryptomus').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            // Validate form
+            if (!fullname || fullname.length < 2) {
+                alert('Please enter your full name');
+                return;
+            }
+            
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email');
+                return;
+            }
+            
+            // Store customer info (optional)
+            sessionStorage.setItem('orderData', JSON.stringify({
+                name: fullname,
+                email: email
+            }));
+            
+            // Open payment widget
+            cryptomusWidget.open();
+        });
+    </script>
+</body>
+</html>
+```
+
+---
+
+## 🔧 Advanced: Dynamic Pricing
+
+For multiple plans with different prices:
+
+```html
 <script>
+    // Get selected plan and calculate amount
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedPlan = urlParams.get('plan') || 'Pro';
+    const planPrices = { 'Basic': 10, 'Pro': 20, 'Business': 30 };
+    const paymentAmount = planPrices[selectedPlan] || 20;
+    
+    // Initialize Cryptomus Widget with dynamic amount
+    const cryptomusWidget = new CryptomusWidget({
+        merchant_id: 'YOUR_MERCHANT_ID_HERE',
+        amount: paymentAmount.toString(),  // Convert to string
+        currency: 'USD',
+        order_id: 'HOSTINO-' + Date.now(),
+        success_url: window.location.origin + '/thankyou.html',
+        fail_url: window.location.origin + '/checkout.html?plan=' + selectedPlan
+    });
+    
+    console.log('✅ Cryptomus Widget initialized');
+    console.log('💰 Amount: $' + paymentAmount);
+    console.log('📦 Plan: ' + selectedPlan);
+    
+    // Handle payment button with validation and storage
+    document.getElementById('pay-with-cryptomus').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const fullname = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        
+        if (!fullname || fullname.length < 2) {
+            alert('❌ Please enter your full name');
+            return;
+        }
+        
+        if (!email || !email.includes('@')) {
+            alert('❌ Please enter a valid email address');
+            return;
+        }
+        
+        console.log('✅ Form validated - Opening payment widget...');
+        
+        // Store customer info for thank you page
+        sessionStorage.setItem('orderData', JSON.stringify({
+            plan: selectedPlan,
+            amount: paymentAmount,
+            email: email,
+            name: fullname
+        }));
+        
+        // Open Cryptomus payment widget
+        cryptomusWidget.open();
+    });
+</script>
+```
+
+---
+
+## 🧪 Testing
+
+### Local Testing
+
+1. **Start a local server:**
+
+   **Using Python:**
+   ```bash
+   python -m http.server 8000
+   ```
+
+   **Using Node.js:**
+   ```bash
+   npx http-server -p 8000
+   ```
+
+2. **Open in browser:**
+   ```
+   http://localhost:8000/checkout.html
+   ```
+
+3. **Test the flow:**
+   - Fill form
+   - Click payment button
+   - Widget should open
+   - See cryptocurrency options
+
+---
+
+## 🐛 Troubleshooting
+
+### Issue 1: Widget Doesn't Open
+
+**Solutions:**
+- Check browser console (F12) for errors
+- Verify widget script loaded: `https://cryptomus.com/widget/v1/widget.js`
+- Confirm merchant_id is correct
+- Use `http://localhost` not `file://`
+
+### Issue 2: "API not active" Error
+
+**Solution:**
+1. Go to Cryptomus Dashboard → Settings → API Keys
+2. Click **"Activate"** on your Payment API Key
+3. Wait 1-2 minutes
+4. Try again
+
+### Issue 3: Variable Redeclaration Error
+
+**Error:** "Cannot redeclare block-scoped variable"
+
+**Cause:** Widget initialized twice in same file
+
+**Solution:** Remove duplicate initialization, keep only one
+
+### Issue 4: Wrong Amount
+
+**Fix:**
+- Use string: `'20.00'` not `20`
+- Include decimals: `'20.00'` not `'20'`
+
+---
+
+## 🌐 Going Live
+
+### Pre-Launch Checklist
+
+- [ ] Test with small real payment ($1-5)
+- [ ] Verify redirects work
+- [ ] Test on mobile
+- [ ] API key is ACTIVE
+- [ ] URLs use HTTPS
+
+### Production Configuration
+
+```javascript
 const cryptomusWidget = new CryptomusWidget({
     merchant_id: 'YOUR_MERCHANT_ID',
     amount: '20.00',
     currency: 'USD',
     order_id: 'ORDER-' + Date.now(),
-    success_url: 'https://yourdomain.com/thankyou.html',
-    fail_url: 'https://yourdomain.com/checkout.html?error=payment_failed'
+    success_url: 'https://yourdomain.com/thankyou.html',  // ✅ HTTPS
+    fail_url: 'https://yourdomain.com/checkout.html'      // ✅ HTTPS
 });
-
-document.getElementById('pay-with-cryptomus').addEventListener('click', function() {
-    cryptomusWidget.open();
-});
-</script>
 ```
 
 ---
 
-## Testing
+## 💰 Supported Cryptocurrencies
 
-### Test Mode
-
-Cryptomus provides a test environment:
-
-1. Use test API credentials from dashboard
-2. Test payments with small amounts
-3. Use testnet cryptocurrencies (if available)
-
-### Test Cases
-
-- ✅ Successful payment flow
-- ✅ Payment cancellation
-- ✅ Payment timeout
-- ✅ Invalid amount handling
-- ✅ Network error handling
-- ✅ Webhook reception
-
-### Testing Checklist
-
-```
-□ Payment creation successful
-□ Redirect to Cryptomus works
-□ Payment page displays correctly
-□ Can select cryptocurrency
-□ QR code displays properly
-□ Payment confirmation received
-□ Redirect back to website works
-□ Order details saved correctly
-□ Confirmation email sent
-□ Thank you page displays order info
-```
+- Bitcoin (BTC)
+- Ethereum (ETH)
+- USDT (Tether)
+- USDC (USD Coin)
+- Litecoin (LTC)
+- And 45+ more!
 
 ---
 
-## Going Live
+## ❓ FAQ
 
-### Pre-Launch Checklist
+**Q: Do I need a backend server?**  
+A: No! Widget works entirely from browser.
 
-1. **Security**
-   - ✅ API keys stored securely (environment variables)
-   - ✅ HTTPS enabled on website
-   - ✅ Input validation implemented
-   - ✅ XSS protection enabled
+**Q: Do I create a widget in dashboard?**  
+A: No! Just use your Merchant ID.
 
-2. **Functionality**
-   - ✅ All payment flows tested
-   - ✅ Webhook verified working
-   - ✅ Error handling implemented
-   - ✅ Logging configured
+**Q: What are the fees?**  
+A: 1-2% per transaction.
 
-3. **User Experience**
-   - ✅ Loading states visible
-   - ✅ Error messages clear
-   - ✅ Success confirmation working
-   - ✅ Email notifications sent
-
-### Environment Variables
-
-Store credentials securely:
-
-```bash
-# .env file
-CRYPTOMUS_MERCHANT_ID=your_merchant_id
-CRYPTOMUS_API_KEY=your_api_key
-CRYPTOMUS_PAYMENT_KEY=your_payment_key
-NODE_ENV=production
-```
-
-### Switch to Production
-
-```javascript
-const CRYPTOMUS_API_URL = process.env.NODE_ENV === 'production'
-    ? 'https://api.cryptomus.com/v1'
-    : 'https://api-test.cryptomus.com/v1';
-```
+**Q: How long do payments take?**  
+A: 1-60 minutes depending on cryptocurrency.
 
 ---
 
-## Payment Flow Diagram
+## 📞 Support
 
-```
-User                    Website                 Cryptomus
-  |                        |                        |
-  |---Fill Checkout Form-->|                        |
-  |                        |                        |
-  |---Click Pay Button---->|                        |
-  |                        |                        |
-  |                        |---Create Payment------>|
-  |                        |                        |
-  |                        |<--Payment URL----------|
-  |                        |                        |
-  |<----Redirect-----------|                        |
-  |                        |                        |
-  |----------------Select Crypto & Pay------------>|
-  |                        |                        |
-  |                        |<--Webhook Notification-|
-  |                        |                        |
-  |<--Redirect to Success--|                        |
-  |                        |                        |
-```
+- **Docs:** https://doc.cryptomus.com/
+- **Support:** support@cryptomus.com
+- **Dashboard:** https://app.cryptomus.com
 
 ---
 
-## Troubleshooting
+## ✅ Quick Summary
 
-### Common Issues
+**What You Need:**
+1. Cryptomus account
+2. Merchant ID
+3. Active Payment API Key
 
-**1. Invalid Signature Error**
-```
-Error: Invalid signature
-Solution: Verify API key and signature generation algorithm
-```
+**Integration Steps:**
+1. Add widget script
+2. Initialize with Merchant ID
+3. Connect to payment button
 
-**2. Payment Creation Failed**
-```
-Error: 400 Bad Request
-Solution: Check required fields and data format
-```
-
-**3. Webhook Not Received**
-```
-Issue: No payment confirmation
-Solution: Verify webhook URL is publicly accessible and HTTPS
-```
-
-**4. CORS Error**
-```
-Error: CORS policy blocked
-Solution: Add CORS headers to your backend or use backend proxy
-```
-
-### Debug Mode
-
-Enable debug logging:
-
-```javascript
-const DEBUG = true;
-
-if (DEBUG) {
-    console.log('Payment Data:', paymentData);
-    console.log('Signature:', signature);
-    console.log('Response:', response);
-}
-```
+**Time Required:** 10 minutes
 
 ---
 
-## Security Best Practices
+**That's it! You're ready to accept crypto payments! 🎉**
 
-1. **Never expose API keys** in frontend code
-2. **Always validate** payment amounts on backend
-3. **Verify webhook signatures** before processing
-4. **Use HTTPS** for all communications
-5. **Implement rate limiting** on payment endpoints
-6. **Log all payment attempts** for auditing
-7. **Store sensitive data encrypted** in database
-
----
-
-## Additional Resources
-
-- 📚 [Cryptomus Documentation](https://doc.cryptomus.com/)
-- 💬 [Cryptomus Support](https://cryptomus.com/support)
-- 🔗 [API Reference](https://doc.cryptomus.com/api)
-- 📺 [Video Tutorials](https://cryptomus.com/tutorials)
-- 💡 [Community Forum](https://community.cryptomus.com/)
-
----
-
-## Support
-
-For integration help:
-- Email: support@cryptomus.com
-- Live Chat: Available in dashboard
-- Telegram: @cryptomus_support
-
----
-
-## Changelog
-
-### Version 1.0 (Current)
-- Initial integration guide
-- Backend example (Node.js)
-- Frontend integration
-- Testing procedures
-- Security guidelines
-
----
-
-**Ready to accept crypto payments? Follow this guide and you'll be up and running in no time!** 🚀
-
-
+*Last Updated: November 1, 2025*
