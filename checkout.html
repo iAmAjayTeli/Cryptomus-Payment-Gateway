@@ -107,7 +107,12 @@
                                 
                                         
                                         <div id="cryptomus-widget-container" style="display: flex; justify-content: center; margin-top: 20px;">
-                                            
+                                            <iframe
+src="https://pay.cryptomus.com/widget/050cd400-0435-4e6d-a6a8-13e87c4adb3f"
+height="344px"
+width="440px">
+</iframe>
+                                    
                                         </div>
                                         
                                     
@@ -235,6 +240,45 @@
     <script src="script.js"></script>
     <script src="checkout.js"></script>
 
+    <script src="https://cryptomus.com/widget/v1/widget.js"></script>
+
+    <script>
+        // Initialize Cryptomus Widget
+        const cryptomusWidget = new CryptomusWidget({
+            merchant_id: '76a599ab-322a-42bf-b010-5e7d6e687afb',  // Your Merchant ID
+            amount: '20.00',                       // Payment amount
+            currency: 'USD',                       // Currency code
+            order_id: 'ORDER-' + Date.now(),      // Unique order ID
+            success_url: window.location.origin + '/thankyou.html',  // Success redirect
+            fail_url: window.location.origin + '/checkout.html?error=payment_failed'  // Fail redirect
+        });
+    </script>
+
+<script>
+    document.getElementById('pay-with-cryptomus').addEventListener('click', function(e) {
+           e.preventDefault();
+          
+           // Get form values
+           const fullname = document.getElementById('fullname').value.trim();
+           const email = document.getElementById('email').value.trim();
+          
+           // Validate form
+           if (!fullname || fullname.length < 2) {
+               alert('Please enter your full name');
+               return;
+           }
+          
+           if (!email || !email.includes('@')) {
+               alert('Please enter a valid email');
+               return;
+           }
+          
+           // Open Cryptomus payment widget
+           cryptomusWidget.open();
+       });
+   </script>
+   
+    
 
 </body>
 </html>
