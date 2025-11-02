@@ -104,50 +104,13 @@
                                             </div>
                                         </div>
 
-                                        <!-- Cryptomus Integration Placeholder -->
-                                        <!-- ============================================== -->
-                                        <!-- Cryptomus Integration Code Here -->
-                                        <!-- 
-                                        This is where the Cryptomus payment integration will be implemented.
+                                
                                         
-                                        Integration steps:
-                                        1. Include Cryptomus SDK
-                                        2. Initialize payment with merchant ID
-                                        3. Create payment invoice
-                                        4. Handle payment callback
-                                        5. Redirect to thank you page on success
-                                        
-                                        Example structure:
-                                        <script src="https://cryptomus.com/sdk.js"></script>
-                                        <script>
-                                            const cryptomus = new Cryptomus({
-                                                merchantId: 'YOUR_MERCHANT_ID',
-                                                apiKey: 'YOUR_API_KEY'
-                                            });
-                                            
-                                            // Payment button click handler
-                                            document.getElementById('pay-with-cryptomus').addEventListener('click', async () => {
-                                                const payment = await cryptomus.createPayment({
-                                                    amount: selectedPlanPrice,
-                                                    currency: 'USD',
-                                                    order_id: generateOrderId(),
-                                                    customer: {
-                                                        email: document.getElementById('email').value,
-                                                        name: document.getElementById('fullname').value
-                                                    }
-                                                });
-                                                
-                                                // Redirect to payment page
-                                                window.location.href = payment.url;
-                                            });
-                                        </script>
-                                        -->
-                                        <!-- ============================================== -->
-
-                                        <!-- Cryptomus Payment Form Widget -->
                                         <div id="cryptomus-widget-container" style="display: flex; justify-content: center; margin-top: 20px;">
-                                            <!-- Widget will be injected here dynamically -->
+                                            
                                         </div>
+                                        
+                                    
 
                                         <div class="mt-4 flex items-center justify-center">
                                             <img src="https://cryptomus.com/images/logo/logo.svg" alt="Cryptomus" class="h-8 opacity-60">
@@ -272,68 +235,6 @@
     <script src="script.js"></script>
     <script src="checkout.js"></script>
 
-    <!-- ============================================== -->
-    <!-- 🎬 CRYPTOMUS PAYMENT INTEGRATION -->
-    <!-- ============================================== -->
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎬 Cryptomus payment widget integration loaded');
-            
-            // Your Cryptomus Widget Base URL
-            const CRYPTOMUS_WIDGET_BASE_URL = 'https://pay.cryptomus.com/widget/a54e034f-c077-4873-be59-545508d79017';
-            
-            // Get the container
-            const widgetContainer = document.getElementById('cryptomus-widget-container');
-            
-            if (!widgetContainer) {
-                console.error('❌ Widget container not found!');
-                return;
-            }
-            
-            // Get plan details from URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const planName = urlParams.get('plan') || 'Pro';
-            
-            // Get price from the order summary
-            const totalElement = document.getElementById('total');
-            let amount = '20.00'; // Default amount
-            
-            // Wait a bit for checkout.js to update the total
-            setTimeout(function() {
-                if (totalElement && totalElement.textContent) {
-                    // Extract number from "$20.00" format
-                    const priceMatch = totalElement.textContent.match(/[\d.]+/);
-                    if (priceMatch) {
-                        amount = priceMatch[0];
-                        console.log('💰 Dynamic amount detected: $' + amount);
-                    }
-                }
-                
-                // Build widget URL with dynamic amount
-                // Cryptomus expects whole numbers without decimals (e.g., 20 not 20.00)
-                const amountWhole = Math.round(parseFloat(amount));
-                const orderId = 'ORDER-' + Date.now();
-                const widgetURL = CRYPTOMUS_WIDGET_BASE_URL + '?amount=' + amountWhole;
-                
-                console.log('🔗 Widget URL:', widgetURL);
-                console.log('💰 Amount set to: $' + amountWhole);
-                
-                // Create and inject iframe
-                const iframe = document.createElement('iframe');
-                iframe.src = widgetURL;
-                iframe.width = '440px';
-                iframe.height = '412px';
-                iframe.style.border = 'none';
-                iframe.style.borderRadius = '12px';
-                iframe.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-                
-                widgetContainer.appendChild(iframe);
-                
-                console.log('✅ Cryptomus payment widget loaded with amount: $' + amount);
-            }, 500); // Wait 500ms for price to load
-        });
-    </script>
 
 </body>
 </html>
