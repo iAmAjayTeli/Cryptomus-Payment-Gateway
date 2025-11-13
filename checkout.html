@@ -29,7 +29,7 @@
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="pricing.html" class="nav-link">Pricing</a>
                     <a href="#contact" class="nav-link">Contact</a>
-                    <a href="#" class="nav-link">Login</a>
+                    <a href="login.html" class="nav-link">Login</a>
                 </div>
             </div>
         </div>
@@ -277,9 +277,17 @@ width="440px">
            cryptomusWidget.open();
        });
    </script>
-   
-    
-
+    <script src="checkout.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Protect checkout page - require authentication
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!isAuthenticated()) {
+                alert('Please log in to access the checkout page.');
+                window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+            }
+        });
+    </script>
 </body>
 </html>
 

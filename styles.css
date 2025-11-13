@@ -864,3 +864,230 @@ html {
     color: white;
 }
 
+/* ===============================================
+   AUTHENTICATION STYLES
+   =============================================== */
+
+.auth-input {
+    appearance: none;
+    border-radius: 0.5rem;
+    border: 2px solid #e5e7eb;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #1f2937;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.auth-input:invalid {
+    border-color: #ef4444;
+}
+
+.auth-btn-primary {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 3rem;
+}
+
+.auth-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+}
+
+.auth-btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-spinner {
+    margin-left: 0.5rem;
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: #374151;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-btn:hover {
+    border-color: var(--primary-blue);
+    background-color: #f9fafb;
+    transform: translateY(-1px);
+}
+
+.social-btn i {
+    margin-right: 0.5rem;
+    font-size: 1.125rem;
+}
+
+.password-strength {
+    margin-top: 0.5rem;
+}
+
+.password-strength-bar {
+    width: 100%;
+    height: 0.25rem;
+    background-color: #e5e7eb;
+    border-radius: 0.125rem;
+    overflow: hidden;
+}
+
+.password-strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: all 0.3s ease;
+    border-radius: 0.125rem;
+}
+
+.password-strength-text {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Dashboard Styles */
+.dashboard-card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.dashboard-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-stat-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-primary {
+    background: var(--gradient-primary);
+}
+
+.stat-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.stat-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.stat-info {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+/* User Menu Styles */
+#user-menu {
+    z-index: 1000;
+}
+
+#user-dropdown {
+    z-index: 1001;
+    border: 1px solid #e5e7eb;
+}
+
+#user-dropdown a:hover {
+    background-color: #f3f4f6;
+}
+
+/* Authentication Form Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-form-container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading States */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive Authentication */
+@media (max-width: 640px) {
+    .auth-input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    .social-btn {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .social-btn i {
+        margin-right: 0.25rem;
+        font-size: 1rem;
+    }
+}
+
